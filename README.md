@@ -29,7 +29,7 @@ python spica/spica_llm_sequencer.py path/to/your_input.json
 
 ---
 
-## Hybrid Architecture|
+## Hybrid Architecture
 
 ### Pipeline
 
