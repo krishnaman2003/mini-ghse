@@ -1,6 +1,4 @@
-# Spica Mini GHSE Take-Home Assignment
-
-A mini Geographic & Human Sequencing Engine
+# A mini Geographic & Human Sequencing Engine
 
 ## Solution Overview
 
