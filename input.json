@@ -1,0 +1,56 @@
+{
+  "user": {
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "time_available_minutes": 180,
+    "preferences": ["coffee", "walk", "quiet"],
+    "avoid": ["crowded"],
+    "start_time": "16:30"
+  },
+  "places": [
+    {
+      "id": "p1",
+      "name": "Cafe A",
+      "type": "cafe",
+      "lat": 12.9721,
+      "lng": 77.5950,
+      "avg_duration_minutes": 45,
+      "crowd_level": "medium",
+      "open_from": "08:00",
+      "open_to": "20:00"
+    },
+    {
+      "id": "p2",
+      "name": "Park B",
+      "type": "park",
+      "lat": 12.9730,
+      "lng": 77.5932,
+      "avg_duration_minutes": 40,
+      "crowd_level": "low",
+      "open_from": "05:00",
+      "open_to": "19:00"
+    },
+    {
+      "id": "p3",
+      "name": "Bar C",
+      "type": "bar",
+      "lat": 12.9698,
+      "lng": 77.5961,
+      "avg_duration_minutes": 60,
+      "crowd_level": "high",
+      "open_from": "18:00",
+      "open_to": "23:00"
+    },
+    {
+      "id": "p4",
+      "name": "Bookstore D",
+      "type": "bookstore",
+      "lat": 12.9705,
+      "lng": 77.5928,
+      "avg_duration_minutes": 30,
+      "crowd_level": "low",
+      "open_from": "10:00",
+      "open_to": "21:00"
+    }
+  ]
+}
