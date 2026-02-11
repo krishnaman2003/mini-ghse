@@ -31,18 +31,7 @@ python spica/spica_llm_sequencer.py path/to/your_input.json
 
 ---
 
-## Architecture
-
-### Why Hybrid (Python + LLM)?
-
-| Component | Python | LLM |
-|-----------|--------|-----|
-| Distance calculation | ✓ (Haversine) | ✗ (LLMs hallucinate numbers) |
-| Travel time estimation | ✓ (constant speed) | ✗ |
-| Opening hours check | ✓ (datetime comparison) | ✗ |
-| Preference matching | ✗ (requires hardcoded maps) | ✓ (understands "coffee" ↔ "cafe") |
-| Explanations | ✗ (template strings) | ✓ (natural language) |
-| Time arithmetic | ✓ (validated always) | ✗ (never trusted) |
+## Hybrid Architecture|
 
 ### Pipeline
 
@@ -72,8 +61,6 @@ Output JSON
 ```
 
 ### Key Design Decision: Fully Dynamic Knowledge
-
-The engine has **zero hardcoded maps**. While the original version used static rules, the new hybrid engine delegates all semantic reasoning to the LLM.
 
 1.  **Preference Matching**: Dynamically understands "coffee" ↔ cafe, "quiet" ↔ bookstore/library, "walk" ↔ park.
 2.  **Avoid Logic**: Dynamically understands that "crowded" applies to places with high crowd levels.
@@ -230,20 +217,9 @@ Error:    { "error": { "code": "NO_VALID_PLACES", "message": "..." } }
 ## Code Quality
 
 - **Comments**: Explain *why*, not *what*
-- **Type hints**: All functions have type annotations
 - **No hardcoded preference maps**: LLM handles all semantic matching
 - **Deterministic**: `temperature=0.0` → same input always gives same output
 - **Graceful degradation**: If LLM fails, greedy fallback always produces a valid plan
 - **Robust parsing**: 3-strategy JSON extraction handles LLM output quirks
 
 ---
-
-## Trade-offs
-
-| Decision | Benefit | Cost |
-|----------|---------|------|
-| Local LLM (Qwen 2.5 1.5B) | No API keys, runs anywhere, free | Slower than cloud APIs (~5-10s vs <1s) |
-| Pre-filtering in Python | Faster inference, cleaner reasoning | LLM can't "reconsider" filtered places |
-| Temperature = 0.0 | Deterministic output | No exploration/variety |
-| Greedy nearest-next | Simple, fast | Not globally optimal for routes |
-| Python validator | Guarantees feasibility | May drop LLM's creative suggestions |
